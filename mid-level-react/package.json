@@ -3,11 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "yarn db:seed && astro dev",
+    "dev": "npm run db:seed && astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "db:push": "npx drizzle-kit push && yarn db:seed",
+    "db:push": "npx drizzle-kit push && npm run db:seed",
     "db:seed": "npx tsx src/lib/db/seed.ts"
   },
   "dependencies": {
