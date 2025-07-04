@@ -3,8 +3,8 @@ import {
   useEditExpense,
   useEmployees,
   useExpenses,
-} from '../../../hooks/useQueries'
-import { useAppStore } from '../../../stores/appStore'
+} from '../../hooks/useQueries'
+import { useAppStore } from '../../stores/appStore'
 import './ExpensesTable.scss'
 
 interface Employee {
@@ -36,8 +36,7 @@ export default function ExpensesTable() {
   const { data: employees } = useEmployees()
   const editExpenseMutation = useEditExpense()
 
-  // Helper function to filter expenses by date
-  const filterByDate = (expenseDate: string) => {
+  function filterByDate(expenseDate: string) {
     if (dateFilter === 'All') return true
     const today = new Date()
     const expDate = new Date(expenseDate)
@@ -52,6 +51,13 @@ export default function ExpensesTable() {
       )
     }
     return true
+  }
+
+  function handleStatusChange(expenseId: number, newStatus: string) {
+    editExpenseMutation.mutate({
+      id: expenseId,
+      status: newStatus,
+    })
   }
 
   // Filter and sort expenses based on search term, status, date, and sort criteria
@@ -85,12 +91,6 @@ export default function ExpensesTable() {
         return 0
       }) ?? []
 
-  const handleStatusChange = (expenseId: number, newStatus: string) => {
-    editExpenseMutation.mutate({
-      id: expenseId,
-      status: newStatus,
-    })
-  }
   return (
     <div className='expenses-table__container'>
       <table className='expenses-table'>

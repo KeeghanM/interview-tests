@@ -3,22 +3,24 @@ import type { Expense } from '../../app'
 import { useExpenses } from '../../hooks/useQueries'
 import './DashboardPage.scss'
 
-const calculateTotals = (expenses: Expense[]) => {
-  const pending = expenses
-    .filter((e) => e.status === 'Pending')
-    .reduce((sum, expense) => sum + Number(expense.amount), 0)
-  const approved = expenses
-    .filter((e) => e.status === 'Approved')
-    .reduce((sum, expense) => sum + Number(expense.amount), 0)
-  const rejected = expenses
-    .filter((e) => e.status === 'Rejected')
-    .reduce((sum, expense) => sum + Number(expense.amount), 0)
-  return { pending, approved, rejected }
-}
-
 export default function DashboardPage() {
   const { data: expenses } = useExpenses()
+
+  function calculateTotals(expenses: Expense[]) {
+    const pending = expenses
+      .filter((e) => e.status === 'Pending')
+      .reduce((sum, expense) => sum + Number(expense.amount), 0)
+    const approved = expenses
+      .filter((e) => e.status === 'Approved')
+      .reduce((sum, expense) => sum + Number(expense.amount), 0)
+    const rejected = expenses
+      .filter((e) => e.status === 'Rejected')
+      .reduce((sum, expense) => sum + Number(expense.amount), 0)
+    return { pending, approved, rejected }
+  }
+
   const totals = calculateTotals(expenses ?? [])
+
   return (
     <div className='dashboard'>
       <h1 className='dashboard__title'>Expense Dashboard</h1>

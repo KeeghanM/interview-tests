@@ -1,7 +1,7 @@
 import { Plus, Search } from 'lucide-react'
 import { useAppStore } from '../../stores/appStore'
+import ExpensesTable from '../ExpensesTable/ExpensesTable'
 import './ExpensesPage.scss'
-import ExpensesTable from './ExpensesTable'
 
 export default function ExpensesPage() {
   const {

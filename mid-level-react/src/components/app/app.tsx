@@ -5,9 +5,9 @@ import {
   expensesTable,
 } from '../../lib/db/schema'
 import './app.scss'
-import DashboardPage from './components/DashboardPage'
-import ExpenseForm from './components/ExpenseForm'
-import ExpensesPage from './components/ExpensesPage'
+import DashboardPage from './components/DashboardPage/DashboardPage'
+import ExpenseForm from './components/ExpenseForm/ExpensesForm'
+import ExpensesPage from './components/ExpensesPage/ExpensesPage'
 import Navigation from './components/Navigation'
 import { useAppStore } from './stores/appStore'
 
@@ -25,7 +25,7 @@ function MainApp() {
       <main className='app__main'>
         {currentPage === 'dashboard' && <DashboardPage />}
         {currentPage === 'expenses' && <ExpensesPage />}
-        {currentPage === 'add' || (currentPage === 'edit' && <ExpenseForm />)}
+        {(currentPage === 'add' || currentPage === 'edit') && <ExpenseForm />}
       </main>
     </div>
   )

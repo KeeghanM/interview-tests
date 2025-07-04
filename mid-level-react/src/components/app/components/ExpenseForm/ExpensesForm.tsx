@@ -25,7 +25,7 @@ export default function ExpenseForm() {
   })
   const [previewFile, setPreviewFile] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
 
     if (currentPage === 'edit' && editingExpense) {
@@ -40,7 +40,7 @@ export default function ExpenseForm() {
     setCurrentPage('expenses')
   }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (file) {
       setFormData((prev) => ({ ...prev, receipt: file.name }))
@@ -48,7 +48,7 @@ export default function ExpenseForm() {
     }
   }
 
-  const onCancel = () => {
+  function onCancel() {
     setEditingExpense(undefined)
     setCurrentPage('expenses')
   }
