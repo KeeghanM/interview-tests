@@ -4,7 +4,7 @@ import {
   useEmployees,
   useExpenses,
 } from '../../hooks/useQueries'
-import { useAppStore } from '../../stores/appStore'
+import { StatusType, useAppStore } from '../../stores/appStore'
 import './ExpensesTable.scss'
 
 export default function ExpensesTable() {
@@ -38,7 +38,7 @@ export default function ExpensesTable() {
     return true
   }
 
-  function handleStatusChange(expenseId: number, newStatus: string) {
+  function handleStatusChange(expenseId: number, newStatus: StatusType) {
     editExpenseMutation.mutate({
       id: expenseId,
       status: newStatus,
@@ -129,7 +129,7 @@ export default function ExpensesTable() {
                       <>
                         <button
                           onClick={() =>
-                            handleStatusChange(expense.id, 'Approved')
+                            handleStatusChange(expense.id, 'approved')
                           }
                           className='expenses-table__action-btn expenses-table__action-btn--approve'
                         >
@@ -137,7 +137,7 @@ export default function ExpensesTable() {
                         </button>
                         <button
                           onClick={() =>
-                            handleStatusChange(expense.id, 'Rejected')
+                            handleStatusChange(expense.id, 'rejected')
                           }
                           className='expenses-table__action-btn expenses-table__action-btn--reject'
                         >
