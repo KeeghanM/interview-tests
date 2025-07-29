@@ -1,5 +1,10 @@
 import { Plus, Search } from 'lucide-react'
-import { useAppStore } from '../../stores/appStore'
+import {
+  type DateFilterType,
+  type SortByType,
+  type StatusType,
+  useAppStore,
+} from '../../stores/appStore'
 import ExpensesTable from '../ExpensesTable/ExpensesTable'
 import './ExpensesPage.scss'
 
@@ -42,26 +47,26 @@ export default function ExpensesPage() {
           </div>
           <select
             value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
+            onChange={(e) => setStatusFilter(e.target.value as StatusType)}
             className='expenses-page__select'
           >
-            <option value='All'>All Statuses</option>
-            <option value='Pending'>Pending</option>
-            <option value='Approved'>Approved</option>
-            <option value='Rejected'>Rejected</option>
+            <option value='all'>All Statuses</option>
+            <option value='pending'>Pending</option>
+            <option value='approved'>Approved</option>
+            <option value='rejected'>Rejected</option>
           </select>
           <select
             value={dateFilter}
-            onChange={(e) => setDateFilter(e.target.value)}
+            onChange={(e) => setDateFilter(e.target.value as DateFilterType)}
             className='expenses-page__select'
           >
-            <option value='All'>All Time</option>
-            <option value='Last 30 days'>Last 30 days</option>
-            <option value='This month'>This month</option>
+            <option value='all'>All Time</option>
+            <option value='30-days'>Last 30 days</option>
+            <option value='this-month'>This month</option>
           </select>
           <select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
+            onChange={(e) => setSortBy(e.target.value as SortByType)}
             className='expenses-page__select'
           >
             <option value='date'>Sort by Date</option>

@@ -19,7 +19,7 @@ const CATEGORIES = [
 
 const ROLES = ['Manager', 'Developer', 'Designer', 'Admin', 'HR', 'Finance']
 
-const STATUSES = ['Pending', 'Approved', 'Rejected']
+const STATUSES = ['pending', 'approved', 'rejected']
 
 async function main() {
   await reset(db, schema)

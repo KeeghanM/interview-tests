@@ -9,10 +9,10 @@ import DashboardPage from './components/DashboardPage/DashboardPage'
 import ExpenseForm from './components/ExpenseForm/ExpensesForm'
 import ExpensesPage from './components/ExpensesPage/ExpensesPage'
 import Navigation from './components/Navigation'
-import { useAppStore } from './stores/appStore'
+import { StatusType, useAppStore } from './stores/appStore'
 
 export type Employee = typeof employeesTable.$inferSelect
-export type Expense = typeof expensesTable.$inferSelect
+export type Expense = typeof expensesTable.$inferSelect & { status: StatusType }
 export type Category = typeof categoriesTable.$inferSelect
 
 const queryClient = new QueryClient()

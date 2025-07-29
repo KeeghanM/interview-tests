@@ -125,7 +125,7 @@ export default function ExpensesTable() {
                     >
                       <Eye className='expenses-table__action-icon' />
                     </button>
-                    {expense.status === 'Pending' && (
+                    {expense.status === 'pending' && (
                       <>
                         <button
                           onClick={() =>

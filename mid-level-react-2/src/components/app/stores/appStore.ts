@@ -4,7 +4,7 @@ import type { Expense } from '../app'
 export type PageType = 'dashboard' | 'expenses' | 'add' | 'edit'
 export type StatusType = 'all' | 'pending' | 'approved' | 'rejected'
 export type DateFilterType = 'all' | '30-days' | 'this-month'
-export type SortByType = 'date' | 'amount' | 'status'
+export type SortByType = 'date' | 'amount'
 
 interface AppState {
   currentPage: PageType
