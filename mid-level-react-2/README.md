@@ -11,23 +11,11 @@ This repository contains a finance application built with React, TypeScript, and
 
 ## Interview Tickets
 
-### BUG: Expense table not displaying all tickets
+### Add new sort orders
 
-An issue has been reported where the expense table does not display all tickets when first loaded. If you switch the filter to "Pending" and then back to "All", the table displays all tickets correctly.
+As a user, I want to be able to sort expenses by amount and date in both ascending and descending order.
 
-#### Expected Behavior
+#### Acceptance Criteria
 
-The expense table should display the tickets corresponding to the selected filter at all times, even when first loaded.
-
-#### Actual Behavior
-
-The expense table does not display all tickets when first loaded. It shows nothing until the filter is changed to something else and then back to "All".
-
-#### Steps to Reproduce
-
-1. Open the application.
-2. Click on the "Expenses" tab.
-3. Observe that the expense table does not display any tickets initially.
-4. Change the filter to "Pending".
-5. Change the filter back to "All".
-6. Observe that the expense table now displays all tickets correctly.
+- On the Expenses page, the "Sort By" dropdown should allow selecting "Amount Ascending", "Amount Descending", "Date Ascending", and "Date Descending".
+- The expenses table should be sorted according to the selected sort order.

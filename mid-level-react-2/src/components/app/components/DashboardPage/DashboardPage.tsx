@@ -8,13 +8,13 @@ export default function DashboardPage() {
 
   function calculateTotals(expenses: Expense[]) {
     const pending = expenses
-      .filter((e) => e.status === 'Pending')
+      .filter((e) => e.status === 'pending')
       .reduce((sum, expense) => sum + Number(expense.amount), 0)
     const approved = expenses
-      .filter((e) => e.status === 'Approved')
+      .filter((e) => e.status === 'approved')
       .reduce((sum, expense) => sum + Number(expense.amount), 0)
     const rejected = expenses
-      .filter((e) => e.status === 'Rejected')
+      .filter((e) => e.status === 'rejected')
       .reduce((sum, expense) => sum + Number(expense.amount), 0)
     return { pending, approved, rejected }
   }
