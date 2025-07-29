@@ -4,16 +4,26 @@ This is a series of software engineering tests designed to evaluate candidates' 
 
 ## Tests
 
-### 1. Mid Level React Developer
+Your interviewer will tell you which test to complete. Follow the below instructions to download the test, then run the test locally.
+
+Once installed, you can open the README.md file in the test directory to see the instructions for completing the test.
+
+### 1. Mid Level React Developer (Test One)
 
 To download the test, run the following command:
 
 ```bash
-npx degit KeeghanM/interview-tests/mid-level-react mid-level-react
-cd mid-level-react
+npx degit KeeghanM/interview-tests/mid-level-react-1 interview-test
+cd interview-test
 npm install
 ```
 
-This will clone the `mid-level-react` test into a new directory called `mid-level-react`. You can then open the README.md file in that directory for instructions.
+### 2. Mid Level React Developer (Test Two)
 
-You can use any tools you like to complete the test, so that it reflects your true day-to-day work.
+To download the second test, run the following command:
+
+```bash
+npx degit KeeghanM/interview-tests/mid-level-react-2 interview-test
+cd interview-test
+npm install
+```

@@ -1,0 +1,108 @@
+.expenses-table__container {
+  overflow-x: auto;
+}
+
+.expenses-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 0;
+}
+
+.expenses-table__head {
+  background: #f3f4f6;
+}
+
+.expenses-table__header {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.expenses-table__body {
+  background: #fff;
+}
+
+.expenses-table__row {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.expenses-table__cell {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  border-radius: 0.375rem;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.status-badge--pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+.status-badge--approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+.status-badge--rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.expenses-table__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.expenses-table__action-btn {
+  background: none;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.15s;
+
+  &:hover {
+    background: #f3f4f6;
+  }
+}
+
+.expenses-table__action-btn--view {
+  color: #2563eb;
+  &:hover {
+    background: #e0e7ff;
+  }
+}
+
+.expenses-table__action-btn--approve {
+  color: #16a34a;
+  &:hover {
+    background: #dcfce7;
+  }
+}
+
+.expenses-table__action-btn--reject {
+  color: #dc2626;
+  &:hover {
+    background: #fee2e2;
+  }
+}
+
+.expenses-table__action-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+}

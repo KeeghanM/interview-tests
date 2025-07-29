@@ -1,0 +1,11 @@
+.app {
+  min-height: 100vh;
+  background: #f9fafb;
+
+  &__main {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 1rem;
+  }
+}
