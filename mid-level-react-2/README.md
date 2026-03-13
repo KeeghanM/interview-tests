@@ -1,4 +1,4 @@
-# Vertu Technology Mid-Level Frontend Developer Test
+# Technology Mid-Level Frontend Developer Test
 
 ## Instructions
 
