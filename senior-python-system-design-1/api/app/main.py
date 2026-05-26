@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 from collections.abc import AsyncIterator
+import time
 
 import psycopg
 from fastapi import Depends, FastAPI, HTTPException
@@ -11,8 +12,15 @@ from .seed import initialise_database
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    with psycopg.connect(DATABASE_URL) as connection:
-        initialise_database(connection)
+    for attempt in range(1, 31):
+        try:
+            with psycopg.connect(DATABASE_URL) as connection:
+                initialise_database(connection)
+            break
+        except psycopg.OperationalError:
+            if attempt == 30:
+                raise
+            time.sleep(1)
     yield
 
 
