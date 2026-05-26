@@ -56,12 +56,11 @@ export default function App() {
   }, [selectedServiceId])
 
   useEffect(() => {
-    const initialServiceId = services[0]?.id
-    if (!initialServiceId) return
-    getJson<Overview>(`/api/services/${initialServiceId}/overview`)
+    if (!selectedServiceId) return
+    getJson<Overview>(`/api/services/${selectedServiceId}/overview`)
       .then(setOverview)
       .catch((requestError) => setError(requestError.message))
-  }, [services])
+  }, [selectedServiceId])
 
   const selectedService = services.find((service) => service.id === selectedServiceId)
 

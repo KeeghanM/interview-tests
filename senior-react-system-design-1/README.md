@@ -11,18 +11,25 @@ This repository contains a service health dashboard built with React, TypeScript
 
 ## Interview Tickets
 
-### BUG: Service summary does not match selected service
+### BUG: Dashboard can show data from multiple services after quick switching
 
-Operations engineers use the dashboard to compare incident volume across services. They have reported that the summary cards show the wrong totals after switching from one service to another.
+Operations engineers use the dashboard during incidents and often switch between services quickly. They have reported that the selected service heading, incident list, and summary cards can get out of sync.
 
 #### Expected Behavior
 
-- Selecting a service should update both the incident list and the summary cards.
-- The summary cards should match the selected service.
-- The data shown in the browser should match the API response for the selected service.
+- The selected service, incident list, and summary cards should always describe the same service.
+- Switching services should not allow older API responses to overwrite newer selections.
+- Loading or error states should not leave stale data that appears to belong to the current service.
 
 #### Actual Behavior
 
-- The incident list changes when a new service is selected.
-- The summary cards remain stuck on the first service loaded by the page.
-- `GET /api/services/:serviceId/overview` returns the correct data when called directly.
+- After switching services quickly, the dashboard can show a selected service with incident or summary data from a previously selected service.
+- Direct API responses are correct for each service.
+- The inconsistency is caused by frontend request/state handling.
+
+#### Reproduction Steps
+
+1. Open the dashboard in the browser.
+2. Select `Checkout Web`, then immediately select `Search Indexer`.
+3. Observe that the selected service heading changes to `Search Indexer`.
+4. Observe that the incident list or summary cards can change to data from a previously selected service.

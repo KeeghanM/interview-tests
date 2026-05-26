@@ -7,6 +7,20 @@ const app = express()
 const port = Number(process.env.PORT ?? 3000)
 const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 
+const responseDelayMsByServiceId = {
+  billing: 900,
+  checkout: 500,
+  search: 100,
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function simulateServiceLatency(serviceId) {
+  await delay(responseDelayMsByServiceId[serviceId] ?? 100)
+}
+
 app.use(cors())
 app.use(express.json())
 
@@ -67,6 +81,8 @@ app.get('/api/services', async (request, response) => {
 })
 
 app.get('/api/services/:serviceId/incidents', async (request, response) => {
+  await simulateServiceLatency(request.params.serviceId)
+
   const result = await pool.query(
     `
       SELECT id, title, severity, status, opened_at
@@ -80,6 +96,8 @@ app.get('/api/services/:serviceId/incidents', async (request, response) => {
 })
 
 app.get('/api/services/:serviceId/overview', async (request, response) => {
+  await simulateServiceLatency(request.params.serviceId)
+
   const result = await pool.query(
     `
       SELECT
