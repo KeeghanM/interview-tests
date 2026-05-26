@@ -40,22 +40,22 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
-### 4. Senior Python Developer (System Design Test One)
+### 4. Senior Python Developer
 
 To download the test, run the following command:
 
 ```bash
-npx degit KeeghanM/interview-tests/senior-python-system-design-1 interview-test
+npx degit KeeghanM/interview-tests/senior-python-1 interview-test
 cd interview-test
 docker compose up --build
 ```
 
-### 5. Senior React Developer (System Design Test One)
+### 5. Senior React Developer
 
 To download the test, run the following command:
 
 ```bash
-npx degit KeeghanM/interview-tests/senior-react-system-design-1 interview-test
+npx degit KeeghanM/interview-tests/senior-react-1 interview-test
 cd interview-test
 docker compose up --build
 ```
