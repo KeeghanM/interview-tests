@@ -27,3 +27,35 @@ npx degit KeeghanM/interview-tests/mid-level-react-2 interview-test
 cd interview-test
 npm install
 ```
+
+### 3. Mid Level Python Developer (Test One)
+
+To download the test, run the following command:
+
+```bash
+npx degit KeeghanM/interview-tests/mid-level-python-1 interview-test
+cd interview-test
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+### 4. Senior Python Developer (System Design Test One)
+
+To download the test, run the following command:
+
+```bash
+npx degit KeeghanM/interview-tests/senior-python-system-design-1 interview-test
+cd interview-test
+docker compose up --build
+```
+
+### 5. Senior React Developer (System Design Test One)
+
+To download the test, run the following command:
+
+```bash
+npx degit KeeghanM/interview-tests/senior-react-system-design-1 interview-test
+cd interview-test
+docker compose up --build
+```
