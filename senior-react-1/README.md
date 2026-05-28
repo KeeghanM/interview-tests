@@ -24,8 +24,6 @@ Operations engineers use the dashboard during incidents and often switch between
 #### Actual Behavior
 
 - After switching services quickly, the dashboard can show a selected service with incident or summary data from a previously selected service.
-- Direct API responses are correct for each service.
-- The inconsistency is caused by frontend request/state handling.
 
 #### Reproduction Steps
 
