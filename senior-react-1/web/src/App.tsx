@@ -69,7 +69,7 @@ export default function App() {
       <section className="hero">
         <p className="eyebrow">Operations Console</p>
         <h1>Service Health Dashboard</h1>
-        <p>Trace stale data from the selected service, through React state and API calls, into Postgres.</p>
+        <p>Current incidents, deployment details, and service ownership in one place.</p>
       </section>
 
       {error && <p className="error">{error}</p>}

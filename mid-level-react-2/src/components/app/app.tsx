@@ -9,7 +9,7 @@ import DashboardPage from './components/DashboardPage/DashboardPage'
 import ExpenseForm from './components/ExpenseForm/ExpensesForm'
 import ExpensesPage from './components/ExpensesPage/ExpensesPage'
 import Navigation from './components/Navigation'
-import { StatusType, useAppStore } from './stores/appStore'
+import { type StatusType, useAppStore } from './stores/appStore'
 
 export type Employee = typeof employeesTable.$inferSelect
 export type Expense = typeof expensesTable.$inferSelect & { status: StatusType }

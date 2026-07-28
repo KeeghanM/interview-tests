@@ -9,7 +9,6 @@ def build_dashboard(services_json: str, incidents_json: str, service_id: str) ->
     if service is None:
         return json.dumps({"error": "Service not found"})
 
-    # Incidents from services with the same owner are currently included.
     selected_incidents = [item for item in incidents if item["owner"] == service["owner"]]
     selected_incidents.sort(key=lambda item: item["opened_at"], reverse=True)
 

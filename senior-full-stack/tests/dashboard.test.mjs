@@ -7,14 +7,15 @@ const load = async (name) => JSON.parse(await readFile(new URL(`../api/data/${na
 const services = await load('services.json')
 const incidents = await load('incidents.json')
 
-test('checkout dashboard contains only checkout incidents', async () => {
-  const dashboard = await buildDashboard(services, incidents, 'checkout-web')
-  assert.ok(dashboard.incidents.length > 0)
-  assert.ok(dashboard.incidents.every((incident) => incident.service_id === 'checkout-web'))
+test('catalog dashboard returns its service and incidents', async () => {
+  const dashboard = await buildDashboard(services, incidents, 'catalog-api')
+  assert.equal(dashboard.service.id, 'catalog-api')
+  assert.deepEqual(dashboard.incidents.map((incident) => incident.id), ['INC-404'])
 })
 
-test('summary is derived from the isolated incident set', async () => {
-  const dashboard = await buildDashboard(services, incidents, 'search-indexer')
+test('summary is derived from the returned incident set', async () => {
+  const dashboard = await buildDashboard(services, incidents, 'catalog-api')
   assert.equal(dashboard.summary.total_incidents, dashboard.incidents.length)
   assert.equal(dashboard.summary.active_incidents, dashboard.incidents.filter((incident) => incident.status === 'open').length)
+  assert.equal(dashboard.summary.highest_severity, 'high')
 })

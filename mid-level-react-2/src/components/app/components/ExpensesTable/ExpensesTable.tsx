@@ -4,7 +4,7 @@ import {
   useEmployees,
   useExpenses,
 } from '../../hooks/useQueries'
-import { StatusType, useAppStore } from '../../stores/appStore'
+import { type StatusType, useAppStore } from '../../stores/appStore'
 import './ExpensesTable.scss'
 
 export default function ExpensesTable() {

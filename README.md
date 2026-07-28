@@ -2,7 +2,7 @@
 
 A set of practical software engineering exercises focused on debugging, problem solving, application structure, testing, and explaining trade-offs.
 
-The new full-stack tests are self-contained. Candidates only need Node.js and npm: no Python installation, Docker, database, external service, or API key is required. Python runs through Pyodide, bundled from npm.
+The full-stack tests are self-contained. Candidates only need Node.js 22 and npm: no Python installation, Docker, database, external service, or API key is required. Python runs through Pyodide, bundled from npm.
 
 Your interviewer will tell you which test to complete.
 
@@ -52,6 +52,18 @@ npm install
 npm run dev
 ```
 
-## Legacy senior exercises
+## Senior React Developer
 
-The original `senior-python-1` and `senior-react-1` exercises remain available for specialist roles.
+```bash
+npx degit KeeghanM/interview-tests/senior-react-1 interview-test
+cd interview-test
+docker compose up --build
+```
+
+## Senior Python Developer
+
+```bash
+npx degit KeeghanM/interview-tests/senior-python-1 interview-test
+cd interview-test
+docker compose up --build
+```

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "npm run db:push && astro dev",
     "build": "astro build",
+    "test": "vitest run",
     "preview": "astro preview",
     "astro": "astro",
     "db:push": "npx drizzle-kit push && npm run db:seed",
@@ -18,7 +19,7 @@
     "@types/react-dom": "^19.1.6",
     "astro": "^5.9.3",
     "dotenv": "^16.5.0",
-    "drizzle-orm": "^0.44.2",
+    "drizzle-orm": "^0.45.2",
     "drizzle-seed": "^0.3.1",
     "lucide-react": "^0.515.0",
     "react": "^19.1.0",
@@ -27,9 +28,14 @@
     "zustand": "^5.0.5"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.1",
+    "@astrojs/node": "9.5.5",
+    "drizzle-kit": "^0.31.10",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
-    "tsx": "^4.20.3"
+    "tsx": "^4.20.3",
+    "vitest": "4.1.10"
+  },
+  "engines": {
+    "node": ">=22.22.2"
   }
 }
