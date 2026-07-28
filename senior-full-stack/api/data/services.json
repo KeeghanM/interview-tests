@@ -1,0 +1,5 @@
+[
+  {"id":"checkout-web","name":"Checkout Web","owner":"Commerce Platform","delay_ms":650},
+  {"id":"search-indexer","name":"Search Indexer","owner":"Commerce Platform","delay_ms":80},
+  {"id":"catalog-api","name":"Catalog API","owner":"Product Data","delay_ms":220}
+]

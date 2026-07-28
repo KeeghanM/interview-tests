@@ -1,36 +1,30 @@
 # Interview Tests
 
-This is a series of software engineering tests designed to evaluate candidates' skills in various areas. They're mainly focused on problem solving, debugging process, and undertanding of app structure.
+A set of practical software engineering exercises focused on debugging, problem solving, application structure, testing, and explaining trade-offs.
 
-## Tests
+Each test is self-contained. Candidates only need Node.js and npm. No Python installation, Docker, database, external service, or API key is required. The full-stack exercises run Python through Pyodide, bundled from npm.
 
-Your interviewer will tell you which test to complete. Follow the below instructions to download the test, then run the test locally.
+Your interviewer will tell you which test to complete.
 
-Once installed, you can open the README.md file in the test directory to see the instructions for completing the test.
-
-### 1. Mid Level React Developer (Test One)
-
-To download the test, run the following command:
+## Mid-Level React Developer (Test One)
 
 ```bash
 npx degit KeeghanM/interview-tests/mid-level-react-1 interview-test
 cd interview-test
 npm install
+npm run dev
 ```
 
-### 2. Mid Level React Developer (Test Two)
-
-To download the second test, run the following command:
+## Mid-Level React Developer (Test Two)
 
 ```bash
 npx degit KeeghanM/interview-tests/mid-level-react-2 interview-test
 cd interview-test
 npm install
+npm run dev
 ```
 
-### 3. Mid Level Python Developer (Test One)
-
-To download the test, run the following command:
+## Mid-Level Python Developer
 
 ```bash
 npx degit KeeghanM/interview-tests/mid-level-python-1 interview-test
@@ -40,22 +34,24 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
-### 4. Senior Python Developer
-
-To download the test, run the following command:
+## Mid-Level Full-Stack Developer
 
 ```bash
-npx degit KeeghanM/interview-tests/senior-python-1 interview-test
+npx degit KeeghanM/interview-tests/mid-level-full-stack interview-test
 cd interview-test
-docker compose up --build
+npm install
+npm run dev
 ```
 
-### 5. Senior React Developer
-
-To download the test, run the following command:
+## Senior Full-Stack Developer
 
 ```bash
-npx degit KeeghanM/interview-tests/senior-react-1 interview-test
+npx degit KeeghanM/interview-tests/senior-full-stack interview-test
 cd interview-test
-docker compose up --build
+npm install
+npm run dev
 ```
+
+## Legacy senior exercises
+
+The original `senior-python-1` and `senior-react-1` exercises remain available for specialist roles.
