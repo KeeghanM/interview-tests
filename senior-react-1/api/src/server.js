@@ -49,7 +49,9 @@ async function seedDatabase() {
     );
   `)
 
-  await pool.query('TRUNCATE deployments, incidents, services RESTART IDENTITY CASCADE')
+  await pool.query(
+    'TRUNCATE deployments, incidents, services RESTART IDENTITY CASCADE',
+  )
   await pool.query(`
     INSERT INTO services (id, name, owner) VALUES
       ('billing', 'Billing API', 'Revenue Platform'),
@@ -76,7 +78,9 @@ app.get('/health', async (request, response) => {
 })
 
 app.get('/api/services', async (request, response) => {
-  const result = await pool.query('SELECT id, name, owner FROM services ORDER BY name')
+  const result = await pool.query(
+    'SELECT id, name, owner FROM services ORDER BY name',
+  )
   response.json(result.rows)
 })
 

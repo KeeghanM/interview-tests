@@ -1,6 +1,6 @@
-from contextlib import asynccontextmanager
-from collections.abc import AsyncIterator
 import time
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 import psycopg
 from fastapi import Depends, FastAPI, HTTPException

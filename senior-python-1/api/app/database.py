@@ -4,7 +4,6 @@ from collections.abc import Iterator
 import psycopg
 from psycopg.rows import dict_row
 
-
 DATABASE_URL = os.environ["DATABASE_URL"]
 
 

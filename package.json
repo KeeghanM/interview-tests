@@ -1,0 +1,18 @@
+{
+  "name": "interview-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "qa:lint": "uv run ruff check --fix .",
+    "qa:format": "uv run ruff format . && npx prettier --write --ignore-unknown ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.32.1",
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

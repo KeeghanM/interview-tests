@@ -2,14 +2,15 @@
 
 ## Instructions
 
-This repository contains a finance API built with Python, FastAPI, SQLAlchemy, and SQLite. It has a local SQLite database which is seeded with random data every time the application is started. It is designed to be fully standalone, and does not require any external services or APIs to run.
+This repository contains a finance API built with Python, FastAPI, SQLAlchemy, and SQLite. It has a local SQLite database which is seeded with deterministic sample data every time the application is started. It is designed to be fully standalone, and does not require any external services or APIs to run.
 
 1. Create a virtual environment with `python -m venv .venv`.
 2. Activate it with `source .venv/bin/activate`.
 3. Run `pip install -e ".[dev]"` to install the dependencies.
 4. Run `uvicorn app.main:app --reload` to start the development server.
 5. Open your browser and navigate to `http://localhost:8000/docs` to view the API.
-6. Follow the below ticket.
+6. Run `pytest` to run the existing tests.
+7. Follow the below ticket.
 
 ## Interview Tickets
 
@@ -20,6 +21,8 @@ An issue has been reported where the expenses endpoint does not return all ticke
 #### Expected Behavior
 
 The expenses endpoint should return the tickets corresponding to the selected filter at all times. When the status filter is `All`, every expense should be returned.
+
+The fix should include automated regression coverage.
 
 #### Actual Behavior
 

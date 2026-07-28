@@ -4,10 +4,13 @@
 
 This repository contains a finance application built with React, TypeScript, and Astro. It has a local SQLite database using Drizzle ORM, this is seeded with random data every time the application is started. It is designed to be fully standalone, and does not require any external services or APIs to run.
 
+Use Node.js 22 as specified in `.nvmrc`.
+
 1. Run `npm install` to install the dependencies.
 2. Run `npm run dev` to start the development server.
 3. Open your browser and navigate to `http://localhost:4321` to view the application.
-4. Follow the below tickets
+4. Run `npm test` to run the existing tests.
+5. Follow the below tickets
 
 ## Interview Tickets
 

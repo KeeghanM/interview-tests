@@ -1,0 +1,30 @@
+[
+  {
+    "id": 101,
+    "merchant": "Rail Europe",
+    "amount": 86.4,
+    "date": "2026-07-02",
+    "status": "Approved"
+  },
+  {
+    "id": 102,
+    "merchant": "North Hotel",
+    "amount": 142.0,
+    "date": "2026-07-05",
+    "status": "Pending"
+  },
+  {
+    "id": 103,
+    "merchant": "Cloud Hosting",
+    "amount": 29.99,
+    "date": "2026-07-08",
+    "status": "Approved"
+  },
+  {
+    "id": 104,
+    "merchant": "Team Lunch",
+    "amount": 64.25,
+    "date": "2026-07-11",
+    "status": "Pending"
+  }
+]

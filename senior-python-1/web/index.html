@@ -5,19 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Order Timeline</title>
     <style>
-      body { font-family: system-ui, sans-serif; margin: 2rem; background: #f7f7f8; color: #1f2937; }
-      main { display: grid; gap: 1rem; grid-template-columns: 280px 1fr; }
-      button, article { border: 1px solid #d1d5db; border-radius: 10px; background: white; }
-      button { width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; text-align: left; cursor: pointer; }
-      button.active { border-color: #2563eb; box-shadow: 0 0 0 2px #bfdbfe; }
-      article { padding: 1rem; }
-      li { margin-bottom: 0.75rem; }
-      .muted { color: #6b7280; }
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 2rem;
+        background: #f7f7f8;
+        color: #1f2937;
+      }
+      main {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 280px 1fr;
+      }
+      button,
+      article {
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        background: white;
+      }
+      button {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        text-align: left;
+        cursor: pointer;
+      }
+      button.active {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px #bfdbfe;
+      }
+      article {
+        padding: 1rem;
+      }
+      li {
+        margin-bottom: 0.75rem;
+      }
+      .muted {
+        color: #6b7280;
+      }
     </style>
   </head>
   <body>
     <h1>Order Timeline</h1>
-    <p class="muted">Trace the timeline from this page, through the API, and into Postgres.</p>
+    <p class="muted">
+      Trace the timeline from this page, through the API, and into Postgres.
+    </p>
     <main>
       <section id="orders"></section>
       <article>
