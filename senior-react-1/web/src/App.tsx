@@ -62,14 +62,19 @@ export default function App() {
       .catch((requestError) => setError(requestError.message))
   }, [selectedServiceId])
 
-  const selectedService = services.find((service) => service.id === selectedServiceId)
+  const selectedService = services.find(
+    (service) => service.id === selectedServiceId,
+  )
 
   return (
     <main className="shell">
       <section className="hero">
         <p className="eyebrow">Operations Console</p>
         <h1>Service Health Dashboard</h1>
-        <p>Current incidents, deployment details, and service ownership in one place.</p>
+        <p>
+          Current incidents, deployment details, and service ownership in one
+          place.
+        </p>
       </section>
 
       {error && <p className="error">{error}</p>}
@@ -79,7 +84,11 @@ export default function App() {
           <h2>Services</h2>
           {services.map((service) => (
             <button
-              className={service.id === selectedServiceId ? 'service selected' : 'service'}
+              className={
+                service.id === selectedServiceId
+                  ? 'service selected'
+                  : 'service'
+              }
               key={service.id}
               onClick={() => setSelectedServiceId(service.id)}
             >
@@ -122,7 +131,9 @@ export default function App() {
                     <strong>{incident.title}</strong>
                     <span>{new Date(incident.opened_at).toLocaleString()}</span>
                   </div>
-                  <span className={`severity ${incident.severity}`}>{incident.severity}</span>
+                  <span className={`severity ${incident.severity}`}>
+                    {incident.severity}
+                  </span>
                   <span>{incident.status}</span>
                 </article>
               ))}

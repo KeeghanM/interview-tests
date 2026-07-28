@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: interview
       POSTGRES_PASSWORD: interview
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U interview -d interview"]
+      test: ['CMD-SHELL', 'pg_isready -U interview -d interview']
       interval: 5s
       timeout: 5s
       retries: 10
@@ -17,7 +17,7 @@ services:
       DATABASE_URL: postgresql://interview:interview@db:5432/interview
       PORT: 3000
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - ./api/src:/app/src
     depends_on:
@@ -29,7 +29,7 @@ services:
     environment:
       VITE_API_BASE_URL: http://localhost:3000
     ports:
-      - "5173:5173"
+      - '5173:5173'
     volumes:
       - ./web/src:/app/src
     depends_on:

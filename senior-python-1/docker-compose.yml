@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: interview
       POSTGRES_PASSWORD: interview
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U interview -d interview"]
+      test: ['CMD-SHELL', 'pg_isready -U interview -d interview']
       interval: 5s
       timeout: 5s
       retries: 10
@@ -16,7 +16,7 @@ services:
     environment:
       DATABASE_URL: postgresql://interview:interview@db:5432/interview
     ports:
-      - "8000:8000"
+      - '8000:8000'
     volumes:
       - ./api/app:/app/app
       - ./api/tests:/app/tests
@@ -27,6 +27,6 @@ services:
   web:
     build: ./web
     ports:
-      - "8080:80"
+      - '8080:80'
     depends_on:
       - api
