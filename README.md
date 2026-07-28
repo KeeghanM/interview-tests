@@ -2,7 +2,7 @@
 
 A set of practical software engineering exercises focused on debugging, problem solving, application structure, testing, and explaining trade-offs.
 
-Each test is self-contained. Candidates only need Node.js and npm. No Python installation, Docker, database, external service, or API key is required. The full-stack exercises run Python through Pyodide, bundled from npm.
+The new full-stack tests are self-contained. Candidates only need Node.js and npm: no Python installation, Docker, database, external service, or API key is required. Python runs through Pyodide, bundled from npm.
 
 Your interviewer will tell you which test to complete.
 
