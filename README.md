@@ -1,8 +1,8 @@
 # Interview Tests
 
-A set of practical software engineering exercises focused on debugging, problem solving, application structure, testing, and explaining trade-offs.
+A set of practical software engineering exercises focused on debugging, problem solving, application structure, and explaining trade-offs.
 
-The full-stack tests are self-contained. Candidates only need Node.js 22 and npm: no Python installation, Docker, database, external service, or API key is required. Python runs through Pyodide, bundled from npm.
+The full-stack tests are self-contained. Candidates need Node.js 22, npm and `uv`: no manually configured Python environment, Docker, database server, external service or API key is required.
 
 Your interviewer will tell you which test to complete.
 
@@ -29,9 +29,8 @@ npm run dev
 ```bash
 npx degit KeeghanM/interview-tests/mid-level-python-1 interview-test
 cd interview-test
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
+uv sync
+uv run uvicorn app.main:app --reload
 ```
 
 ## Mid-Level Full-Stack Developer

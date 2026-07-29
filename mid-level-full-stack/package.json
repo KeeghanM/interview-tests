@@ -5,15 +5,22 @@
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "build": "vite build",
-    "test": "node --test tests/*.test.mjs"
+    "check": "tsc --noEmit && npm run check:api",
+    "check:api": "uv run ruff check api && uv run ty check api"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.80.7",
     "@vitejs/plugin-react": "6.0.4",
-    "express": "5.2.1",
-    "pyodide": "0.29.3",
+    "lucide-react": "^0.515.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "vite": "8.1.5"
+    "vite": "8.1.5",
+    "zustand": "^5.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=22.22.2"

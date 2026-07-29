@@ -1,4 +1,10 @@
+from typing import Literal
+
 from pydantic import BaseModel, ConfigDict
+
+
+class HealthOut(BaseModel):
+    status: Literal["ok"]
 
 
 class EmployeeOut(BaseModel):

@@ -1,7 +1,9 @@
+from typing import Any
+
 import psycopg
 
 
-def initialise_database(connection: psycopg.Connection) -> None:
+def initialise_database(connection: psycopg.Connection[tuple[Any, ...]]) -> None:
     with connection.cursor() as cursor:
         cursor.execute(
             """

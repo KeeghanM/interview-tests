@@ -1,4 +1,4 @@
-# Technology Mid-Level Frontend Developer Test
+# Mid-Level Frontend Developer Test
 
 ## Instructions
 
@@ -7,10 +7,10 @@ This repository contains a finance application built with React, TypeScript, and
 Use Node.js 22 as specified in `.nvmrc`.
 
 1. Run `npm install` to install the dependencies.
-2. Run `npm run dev` to start the development server.
-3. Open your browser and navigate to `http://localhost:4321` to view the application.
-4. Run `npm test` to run the existing tests.
-5. Follow the below tickets
+2. Run `npm run check` to perform static validation.
+3. Run `npm run dev` to start the development server.
+4. Open your browser and navigate to `http://localhost:4321` to view the application.
+5. Follow the ticket below.
 
 ## Interview Tickets
 
@@ -22,4 +22,3 @@ As a user, I want to be able to sort expenses by amount and date in both ascendi
 
 - On the Expenses page, the "Sort By" dropdown should allow selecting "Amount Ascending", "Amount Descending", "Date Ascending", and "Date Descending".
 - The expenses table should be sorted according to the selected sort order.
-- The sorting behaviour should be covered by automated tests.

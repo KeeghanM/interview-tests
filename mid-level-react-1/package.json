@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run db:push && astro dev",
     "build": "astro build",
-    "test": "vitest run",
+    "check": "tsc --noEmit",
     "preview": "astro preview",
     "astro": "astro",
     "db:push": "npx drizzle-kit push && npm run db:seed",
@@ -32,8 +32,7 @@
     "drizzle-kit": "^0.31.10",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
-    "tsx": "^4.20.3",
-    "vitest": "4.1.10"
+    "tsx": "^4.20.3"
   },
   "engines": {
     "node": ">=22.22.2"

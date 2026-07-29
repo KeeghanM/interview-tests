@@ -18,7 +18,7 @@ def seed_database(db: Session) -> None:
         Category(name="Meals", active=1),
         Category(name="Software", active=1),
     ]
-    db.add_all(employees + categories)
+    db.add_all([*employees, *categories])
     db.flush()
 
     db.add_all(

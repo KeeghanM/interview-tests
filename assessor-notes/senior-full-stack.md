@@ -1,8 +1,8 @@
 # Senior Full-Stack interviewer guide
 
-Suggested timebox: 75 minutes, including tests and follow-up discussion.
+Suggested timebox: 75 minutes, including implementation and follow-up discussion.
 
-Score out of 30: systematic diagnosis across boundaries (6), backend data isolation and correctness (6), frontend concurrency and state integrity (6), regression tests (5), maintainability and operational thinking (4), communication and validation of AI-assisted work (3).
+Score out of 30: systematic diagnosis across boundaries (7), backend data isolation and correctness (6), frontend concurrency and state integrity (6), maintainability and operational thinking (5), communication (3), validation of AI-assisted work (3).
 
 This assessment contains two independent failures. Strong candidates separate backend data isolation from frontend response ownership, fix both invariants and resist changes that merely hide the deterministic reproduction.
 
@@ -10,12 +10,12 @@ This assessment contains two independent failures. Strong candidates separate ba
 
 1. Reproduce inconsistent data in a single service dashboard and inconsistent state after rapid switching.
 2. Inspect individual endpoint responses and request timing to determine which symptoms already exist in the API and which arise in the browser.
-3. Trace the backend request through Express and Pyodide into `build_dashboard`, then compare the selection predicate with service and incident identities.
+3. Trace the backend request through the FastAPI route, Python service and SQLAlchemy repository, then compare the selection predicate with service and incident identities.
 4. Isolate incidents by the requested service and keep the summary derived from the same set.
 5. Trace the frontend effect and associate each dashboard completion with the selection that initiated it.
 6. Abort superseded requests or guard all state commits with request identity, including errors and loading completion.
 7. Clear old data or explicitly present it as stale during transitions.
-8. Add backend isolation coverage and controlled frontend race coverage, then verify with deterministic delays still enabled.
+8. Verify both fixes with the deterministic delays still enabled and explain why each change restores its boundary invariant.
 
 Changing fixture ownership, removing delays, filtering leaked incidents in the UI, disabling rapid switching or displaying the response's old service as the current selection are not complete fixes.
 
@@ -25,8 +25,8 @@ Changing fixture ownership, removing delays, filtering leaked incidents in the U
 - Uses direct endpoint responses to split backend and frontend hypotheses.
 - Treats service identity as the boundary key for list data and derived summaries.
 - Protects success, error and loading state from superseded requests.
-- Understands that aborting browser fetch does not necessarily cancel queued server work.
-- Tests invariants with alternate identities rather than only the reported IDs.
+- Understands that aborting browser fetch does not necessarily cancel server work already in progress.
+- Checks invariants with alternate identities rather than only the reported IDs.
 - Keeps internal timing fields out of public-contract decisions.
 - Explains which changes are immediate fixes and which are future hardening.
 - Challenges AI suggestions that remove reproduction mechanisms or add unnecessary architecture.
@@ -43,15 +43,15 @@ Look for service ID across backend filtering, response data, summaries, request 
 
 ### Is frontend cancellation sufficient here?
 
-Look for the distinction between aborting the HTTP consumer, queued Pyodide execution and guarding client commits. Correctness should not depend solely on server cancellation succeeding.
+Look for the distinction between aborting the HTTP consumer, FastAPI work already in progress and guarding client commits. Correctness should not depend solely on server cancellation succeeding.
 
 ### Should the dashboard endpoint return a summary or should React derive it?
 
 Both can be valid. Look for data volume, consistency, reuse, authorization and avoiding two sources of truth. In the current API, the summary and list must derive from the same isolated set.
 
-### Which tests provide the most confidence?
+### What testing would provide the most confidence?
 
-Look for backend fixtures with services sharing an owner, exact incident membership, summary invariants, and frontend deferred requests covering stale success, failure and completion.
+Look for backend fixtures with services sharing an owner, exact incident membership and summary invariants, plus frontend deferred requests covering stale success, failure and loading completion. The candidate does not need to implement these during the exercise.
 
 ### What would you monitor in production?
 
@@ -65,6 +65,6 @@ Look for removal of internal `delay_ms` from public DTOs as a reasonable adjacen
 
 - **Weak:** finds only one defect, removes delays, changes fixtures or filters leaked data after the backend boundary.
 - **Baseline:** isolates backend incidents and prevents an older successful dashboard response from replacing current data.
-- **Good:** proves both causes independently, protects all frontend state paths and adds meaningful regression coverage.
-- **Strong:** models service ownership coherently, tests adversarial ordering and explains cancellation and API-boundary trade-offs.
-- **Exceptional:** delivers a focused, operationally sound fix with strong invariant-based tests and clear judgment about what not to change.
+- **Good:** proves both causes independently, protects all frontend state paths and verifies the reported flows.
+- **Strong:** models service ownership coherently, reasons about adversarial ordering and explains cancellation and API-boundary trade-offs.
+- **Exceptional:** delivers a focused, operationally sound fix with clear invariant-based reasoning and strong judgment about what not to change.

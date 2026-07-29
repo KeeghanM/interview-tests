@@ -1,12 +1,14 @@
 import time
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from typing import Annotated
 
 import psycopg
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from .database import DATABASE_URL, get_connection
+from .database import DATABASE_URL, DatabaseConnection, get_connection
+from .schemas import HealthOut, OrderOut, TimelineEventOut, TimelineOrderOut, TimelineOut
 from .seed import initialise_database
 
 
@@ -25,6 +27,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
 
 app = FastAPI(title="Order Timeline API", lifespan=lifespan)
+Connection = Annotated[DatabaseConnection, Depends(get_connection)]
 
 app.add_middleware(
     CORSMiddleware,
@@ -34,13 +37,13 @@ app.add_middleware(
 )
 
 
-@app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+@app.get("/health", response_model=HealthOut)
+def health() -> HealthOut:
+    return HealthOut(status="ok")
 
 
-@app.get("/api/orders")
-def list_orders(connection=Depends(get_connection)):
+@app.get("/api/orders", response_model=list[OrderOut])
+def list_orders(connection: Connection) -> list[OrderOut]:
     with connection.cursor() as cursor:
         cursor.execute(
             """
@@ -50,11 +53,11 @@ def list_orders(connection=Depends(get_connection)):
             ORDER BY o.id
             """
         )
-        return cursor.fetchall()
+        return [OrderOut.model_validate(order) for order in cursor.fetchall()]
 
 
-@app.get("/api/orders/{order_id}/timeline")
-def get_order_timeline(order_id: int, connection=Depends(get_connection)):
+@app.get("/api/orders/{order_id}/timeline", response_model=TimelineOut)
+def get_order_timeline(order_id: int, connection: Connection) -> TimelineOut:
     with connection.cursor() as cursor:
         cursor.execute("SELECT id, customer_id, status FROM orders WHERE id = %s", (order_id,))
         order = cursor.fetchone()
@@ -78,4 +81,7 @@ def get_order_timeline(order_id: int, connection=Depends(get_connection)):
             """,
             {"order_id": order_id},
         )
-        return {"order": order, "timeline": cursor.fetchall()}
+        return TimelineOut(
+            order=TimelineOrderOut.model_validate(order),
+            timeline=[TimelineEventOut.model_validate(event) for event in cursor.fetchall()],
+        )
