@@ -1,4 +1,4 @@
-# Senior React Developer Test
+# Senior React Exercise
 
 ## Instructions
 
@@ -7,8 +7,7 @@ This repository contains a service health dashboard built with React, TypeScript
 1. Run `docker compose up --build`.
 2. Open `http://localhost:5173` to view the dashboard.
 3. Open `http://localhost:3000/health` to check the API.
-4. Run `docker compose exec web npm test` to run the existing frontend tests.
-5. Follow the below ticket.
+4. Follow the ticket below.
 
 ## Interview Tickets
 
@@ -21,7 +20,6 @@ Operations engineers use the dashboard during incidents and often switch between
 - The selected service, incident list, and summary cards should always describe the same service.
 - The dashboard should remain consistent when services are switched quickly.
 - Loading or error states should not leave stale data that appears to belong to the current service.
-- The failure should be covered by an automated regression test.
 
 #### Actual Behavior
 

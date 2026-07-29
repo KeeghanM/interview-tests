@@ -15,13 +15,13 @@ This is primarily a debugging assessment. The final change is deliberately small
 5. Identify that the store starts with lowercase `all`, while the UI and predicate use `All`. Correct the inconsistent model rather than adding an effect or render-time exception.
 6. Verify the initial table and each status filter after the change.
 
-Other evidence-led paths are valid. A candidate may use React Query Devtools, browser breakpoints, tests or direct API requests instead of the network tab and console.
+Other evidence-led paths are valid. A candidate may use React Query Devtools, browser breakpoints or direct API requests instead of the network tab and console.
 
 ## Signals to observe
 
 - Reproduces the issue before editing and can state what changed between the failing and working states.
 - Separates data retrieval from client-side transformation instead of guessing which layer is broken.
-- Uses logs or breakpoints to test a hypothesis rather than scattering output across the codebase.
+- Uses logs or breakpoints to evaluate a hypothesis rather than scattering output across the codebase.
 - Reads the state, select and predicate as one data flow.
 - Notices the date filter has a related casing inconsistency. This is a positive signal; fixing it is not required for the reported ticket.
 - Can distinguish noticing adjacent problems from expanding the scope of the change.
@@ -52,7 +52,11 @@ Look first for ordinary rerenders as query data and component state change. The 
 
 ### Would you fix the date-filter inconsistency in the same change?
 
-Either answer can be strong. Look for explicit risk, testability and scope reasoning rather than a preference for maximum cleanup or minimum diff at all costs.
+Either answer can be strong. Look for explicit risk, verification and scope reasoning rather than a preference for maximum cleanup or minimum diff at all costs.
+
+### How would you test this change?
+
+Look for an initial `All` regression case, every specific status, deterministic expense data and a proportionate split between the filter logic, store state and a small UI integration check.
 
 ## Scoring anchors
 

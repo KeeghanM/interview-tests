@@ -1,8 +1,8 @@
 # Senior React 1 interviewer guide
 
-Suggested timebox: 75 minutes, starting after the Docker services are healthy and including tests and follow-up discussion.
+Suggested timebox: 75 minutes, starting after the Docker services are healthy and including follow-up discussion.
 
-Score out of 30: systematic diagnosis of asynchronous state (6), superseded-request correctness (7), transition and error-state integrity (5), regression tests (5), maintainability (4), communication and trade-offs (3).
+Score out of 30: systematic diagnosis of asynchronous state (7), superseded-request correctness (8), transition and error-state integrity (6), maintainability (5), communication and trade-offs (4).
 
 This assessment is about ownership of asynchronous state. A complete solution must remain correct under arbitrary response ordering; merely making the documented click sequence less likely is not sufficient.
 
@@ -14,7 +14,6 @@ This assessment is about ownership of asynchronous state. A complete solution mu
 4. Prevent superseded success and failure handlers from committing state. `AbortController`, request identity, effect cleanup or a coherent query-library solution are valid.
 5. Ensure an older failure cannot change the current error state. If loading state is introduced, its ownership must also follow the current request.
 6. Clear old data or visibly retain it as stale so it is never presented as belonging to the new heading.
-7. Add controlled tests for out-of-order responses and run the full frontend suite.
 
 The user must remain able to switch services quickly. Disabling controls or adding a debounce without enforcing response ownership masks the reproduction rather than fixing it.
 
@@ -26,7 +25,6 @@ The user must remain able to switch services quickly. Disabling controls or addi
 - Guards success, expected aborts and real failures consistently, plus loading completion if loading state is introduced.
 - Can explain transport cancellation versus ignoring a stale result.
 - Models which service owns incidents, overview and request status.
-- Writes tests using deferred promises or controlled fetch responses rather than real timers.
 - Discusses partial loading and stale-while-revalidate as product decisions.
 - Avoids replacing the architecture unless the replacement materially simplifies correctness.
 
@@ -60,6 +58,6 @@ This starter does not enable Strict Mode. Look for an understanding of the devel
 
 - **Weak:** changes delays, disables switching, clears data without preventing stale commits or assumes the API returned mixed data.
 - **Baseline:** prevents an older successful response from replacing the latest selection.
-- **Good:** also handles stale errors and misleading transition state, plus loading ownership if loading state is added, with a reliable race test.
+- **Good:** also handles stale errors and misleading transition state, plus loading ownership if loading state is added.
 - **Strong:** models resource identity clearly, explains cancellation limits and makes an intentional partial-loading decision.
-- **Exceptional:** provides a concise implementation and adversarial tests while articulating how the same invariant would scale through a server-state abstraction.
+- **Exceptional:** provides a concise implementation while articulating how the same invariant would scale through a server-state abstraction.

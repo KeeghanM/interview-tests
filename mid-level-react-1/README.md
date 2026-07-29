@@ -7,30 +7,30 @@ This repository contains a finance application built with React, TypeScript, and
 Use Node.js 22 as specified in `.nvmrc`.
 
 1. Run `npm install` to install the dependencies.
-2. Run `npm run dev` to start the development server.
-3. Open your browser and navigate to `http://localhost:4321` to view the application.
-4. Run `npm test` to run the existing tests.
-5. Follow the below tickets
+2. Run `npm run check` to perform static validation.
+3. Run `npm run dev` to start the development server.
+4. Open your browser and navigate to `http://localhost:4321` to view the application.
+5. Follow the ticket below.
 
 ## Interview Tickets
 
-### BUG: Expense table not displaying all tickets
+### BUG: Expense table not displaying all expenses
 
-An issue has been reported where the expense table does not display all tickets when first loaded. If you switch the filter to "Pending" and then back to "All", the table displays all tickets correctly.
+An issue has been reported where the expense table does not display all expenses when first loaded. If you switch the filter to "Pending" and then back to "All", the table displays all expenses correctly.
 
 #### Expected Behavior
 
-The expense table should display the tickets corresponding to the selected filter at all times, even when first loaded.
+The expense table should display the expenses corresponding to the selected filter at all times, even when first loaded.
 
 #### Actual Behavior
 
-The expense table does not display all tickets when first loaded. It shows nothing until the filter is changed to something else and then back to "All".
+The expense table does not display all expenses when first loaded. It shows nothing until the filter is changed to something else and then back to "All".
 
 #### Steps to Reproduce
 
 1. Open the application.
 2. Click on the "Expenses" tab.
-3. Observe that the expense table does not display any tickets initially.
+3. Observe that the expense table does not display any expenses initially.
 4. Change the filter to "Pending".
 5. Change the filter back to "All".
-6. Observe that the expense table now displays all tickets correctly.
+6. Observe that the expense table now displays all expenses correctly.

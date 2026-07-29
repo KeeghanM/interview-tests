@@ -1,36 +1,7 @@
 import { useEffect, useState } from 'react'
-
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:3000'
-
-type Service = {
-  id: string
-  name: string
-  owner: string
-}
-
-type Incident = {
-  id: string
-  title: string
-  severity: string
-  status: string
-  opened_at: string
-}
-
-type Overview = {
-  id: string
-  name: string
-  total_incidents: number
-  active_incidents: number
-  latest_version: string
-}
-
-async function getJson<T>(path: string): Promise<T> {
-  const response = await fetch(`${apiBaseUrl}${path}`)
-  if (!response.ok) {
-    throw new Error(`Request failed: ${response.status}`)
-  }
-  return response.json()
-}
+import { getIncidents, getOverview, getServices } from './api'
+import { Dashboard } from './components/Dashboard'
+import type { Incident, Overview, Service } from './types'
 
 export default function App() {
   const [services, setServices] = useState<Service[]>([])
@@ -40,7 +11,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    getJson<Service[]>('/api/services')
+    getServices()
       .then((data) => {
         setServices(data)
         setSelectedServiceId(data[0]?.id ?? '')
@@ -50,14 +21,14 @@ export default function App() {
 
   useEffect(() => {
     if (!selectedServiceId) return
-    getJson<Incident[]>(`/api/services/${selectedServiceId}/incidents`)
+    getIncidents(selectedServiceId)
       .then(setIncidents)
       .catch((requestError) => setError(requestError.message))
   }, [selectedServiceId])
 
   useEffect(() => {
     if (!selectedServiceId) return
-    getJson<Overview>(`/api/services/${selectedServiceId}/overview`)
+    getOverview(selectedServiceId)
       .then(setOverview)
       .catch((requestError) => setError(requestError.message))
   }, [selectedServiceId])
@@ -79,68 +50,14 @@ export default function App() {
 
       {error && <p className="error">{error}</p>}
 
-      <section className="layout">
-        <aside className="panel services">
-          <h2>Services</h2>
-          {services.map((service) => (
-            <button
-              className={
-                service.id === selectedServiceId
-                  ? 'service selected'
-                  : 'service'
-              }
-              key={service.id}
-              onClick={() => setSelectedServiceId(service.id)}
-            >
-              <strong>{service.name}</strong>
-              <span>{service.owner}</span>
-            </button>
-          ))}
-        </aside>
-
-        <section className="content">
-          <div className="panel heading-card">
-            <div>
-              <p className="eyebrow">Selected Service</p>
-              <h2>{selectedService?.name ?? 'Loading'}</h2>
-            </div>
-            <span className="pill">{selectedService?.owner}</span>
-          </div>
-
-          <section className="stats">
-            <article className="stat">
-              <span>Total incidents</span>
-              <strong>{overview?.total_incidents ?? '-'}</strong>
-            </article>
-            <article className="stat">
-              <span>Active incidents</span>
-              <strong>{overview?.active_incidents ?? '-'}</strong>
-            </article>
-            <article className="stat">
-              <span>Latest deployment</span>
-              <strong>{overview?.latest_version ?? '-'}</strong>
-            </article>
-          </section>
-
-          <section className="panel">
-            <h2>Incidents</h2>
-            <div className="incident-list">
-              {incidents.map((incident) => (
-                <article className="incident" key={incident.id}>
-                  <div>
-                    <strong>{incident.title}</strong>
-                    <span>{new Date(incident.opened_at).toLocaleString()}</span>
-                  </div>
-                  <span className={`severity ${incident.severity}`}>
-                    {incident.severity}
-                  </span>
-                  <span>{incident.status}</span>
-                </article>
-              ))}
-            </div>
-          </section>
-        </section>
-      </section>
+      <Dashboard
+        services={services}
+        selectedService={selectedService}
+        selectedServiceId={selectedServiceId}
+        incidents={incidents}
+        overview={overview}
+        onSelectService={setSelectedServiceId}
+      />
     </main>
   )
 }

@@ -3,12 +3,21 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js"
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.0",
+    "typescript": "^5.7.0"
   },
   "engines": {
     "node": ">=22.22.2"

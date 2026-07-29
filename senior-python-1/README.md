@@ -1,14 +1,13 @@
-# Senior Python Developer Test
+# Senior Python Interview Exercise
 
 ## Instructions
 
-This repository contains a small incident timeline system built with a Python FastAPI backend, a static frontend, and Postgres. The services are Dockerised and are intended to be run together with Docker Compose.
+This repository contains an incident timeline system built with a typed Python FastAPI backend, a TypeScript frontend, and Postgres. The services are Dockerised and are intended to be run together with Docker Compose.
 
 1. Run `docker compose up --build`.
 2. Open `http://localhost:8080` to view the dashboard.
 3. Open `http://localhost:8000/docs` to inspect the API.
-4. Run `docker compose exec api python -m pytest` to run the existing API tests.
-5. Follow the below ticket.
+4. Follow the ticket below.
 
 ## Interview Tickets
 
@@ -20,7 +19,6 @@ Support engineers use the order timeline to understand why an order is blocked. 
 
 - The timeline for an order should only contain events that belong to that order.
 - The frontend should display the same timeline that the API returns.
-- The failure should be covered by an automated regression test.
 
 #### Actual Behavior
 
